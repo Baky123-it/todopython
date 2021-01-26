@@ -14,6 +14,6 @@ class Book (models.Model):
     description = models.TextField()
     price = models.IntegerField()
     genre = models.CharField(max_length=50)
-    author = models.CharField(max_length=50)
+    author = models.CharField(max_length=100)
     year = models.DateField()
     

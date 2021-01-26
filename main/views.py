@@ -23,6 +23,22 @@ def books(request):
     books = Book.objects.all()
     return render(request, "books.html", {"books": books})
 
+def add_book(request):
+    form = request.POST
+    book = Book(
+        title=form["title"],
+        subtitle=form["subtitle"], 
+        description=form["description"],
+        price=form["price"][:10],
+        genre=form["genre"],
+        author=form["author"],
+        year=form["date"][:10]
+
+    )
+
+    book.save()
+    return redirect(books)
+
 def add_todo (request):
     form = request.POST
     text = form ["todo_text"]

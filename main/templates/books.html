@@ -6,7 +6,8 @@
     <title>Document</title>
 </head>
 <body>
-    <form method="POST">
+    <form action = "{% url 'add-book' %}"method="POST">
+        {% csrf_token %}
         <h1>Добавить книгу</h1> 
         <input type="text" name="title" placeholder="Заголовок"><br><br>
         <input type="text" name="subtitle" placeholder="Подзаголовок"><br><br>
@@ -14,16 +15,17 @@
         <input type="number" name="price" placeholder="Цена"><br><br>
         <input type="text" name="genre" placeholder="Жанр"><br><br>
         <input type="text" name="author" placeholder="Автор"><br><br>
-        <input type="datetime-local" name="year" placeholder="Год"><br><br>
+        <input type="datetime-local" name="date" placeholder="Год"><br><br>
         <button>Добавить</button>
 
     </form>
 
-    {% for books in books%}
+    {% for book in books%}
         <div>
             <h3>{{ book.title }} - {{ book.author }}</h3>
             <h4>{{ book.price }}</h4>
         </div>
+        <hr>
     {% endfor %}
 </body>
 </html>
